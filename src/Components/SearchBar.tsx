@@ -1,8 +1,21 @@
-const SearchBar = () => {
+import type { ChangeEvent, FormEvent } from "react";
+
+type barType = {
+  tasks: string[];
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+};
+
+const SearchBar = ({ tasks, handleChange, handleSubmit }: barType) => {
   return (
     <>
-      <form className="border bg-gray-600 rounded-xl ">
-        <input type="text" placeholder="Create a task" />
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Create a task"
+          value={tasks}
+          onChange={handleChange}
+        />
       </form>
     </>
   );
